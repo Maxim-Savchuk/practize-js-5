@@ -10,7 +10,7 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
+refs.textarea.addEventListener('input', throttle(onTextareaInput, 1000));
 
 populateTextarea();
 /*
@@ -26,14 +26,13 @@ function onFormSubmit(evt) {
     localStorage.removeItem(STORAGE_KEY);
 }
 
-
 /*
  * - Получаем значение поля
  * - Сохраняем его в хранилище
  * - Можно добавить throttle
  */
 function onTextareaInput(evt) {
-    const message = evt.currentTarget.value;
+    const message = evt.target.value;
 
     localStorage.setItem(STORAGE_KEY, message);
 }
